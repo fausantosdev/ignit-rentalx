@@ -1,4 +1,5 @@
 import { CategoriesRepository } from '../repositories/CategoriesRepository'
+import { ICategoryRepositories } from '../repositories/ICategoriesRepository'
 
 interface IRequest {
     name: string,
@@ -20,7 +21,7 @@ class CreateCategoryService {
     }*/
 
     // Inversão de dependência.      atributo                  tipo 
-    constructor (private categoriesRepository: CategoriesRepository) {}
+    constructor (private categoriesRepository: ICategoryRepositories) {}
 
     execute({name, description}: IRequest): void {
 

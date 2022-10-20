@@ -1,7 +1,15 @@
 import { Category } from '../models/Category'
 
+interface CreateCategoryDTO {
+    name: string
+    description: string
+}
+
+
 interface ICategoryRepositories {
-    finsByName(name: string): Category
+    findByName(name: string): Category
     list(): Category[]
-    create(name: string, description: string): void
+    create({}: CreateCategoryDTO): void
 }    
+
+export { ICategoryRepositories, CreateCategoryDTO }
