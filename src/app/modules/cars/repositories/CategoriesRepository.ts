@@ -1,15 +1,12 @@
 import { Category } from "../models/Category"
+import { CreateCategoryDTO, ICategoryRepositories } from "./ICategoriesRepository"
 
 // Repository = manupulação de dados
 // Servise = Regras de negócio
 
 // DTO = Data Transfer Object: objeto responsável por fazer a transferência de dados entre uma camada/classe e outra
-interface CreateCategoryDTO {
-    name: string
-    description: string
-}
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoryRepositories{
     private categories: Category[]
 
     constructor () {
