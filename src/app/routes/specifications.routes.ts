@@ -5,12 +5,13 @@ import { CreateSpecificationService } from '../modules/cars/services/CreateSpaci
 
 const specificationRoutes = Router()
 
-const categoriesRepository = new SpecificationRepository()
+const specificationsRepository = new SpecificationRepository()
+
 specificationRoutes.post('/', (request, response) => {
     
     const { name, description } = request.body
 
-    const createSpacificationService = new CreateSpecificationService(categoriesRepository)
+    const createSpacificationService = new CreateSpecificationService(specificationsRepository)
 
     createSpacificationService.execute({ name, description })
 
