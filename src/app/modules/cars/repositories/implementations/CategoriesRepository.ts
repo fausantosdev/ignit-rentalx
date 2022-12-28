@@ -1,5 +1,5 @@
-import { Category } from "../models/Category"
-import { CreateCategoryDTO, ICategoryRepositories } from "./ICategoriesRepository"
+import { Category } from "../../models/Category"
+import { CreateCategoryDTO, ICategoryRepositories } from "../ICategoriesRepository"
 
 // Repository = manupulação de dados
 // Servise = Regras de negócio
@@ -9,8 +9,18 @@ import { CreateCategoryDTO, ICategoryRepositories } from "./ICategoriesRepositor
 class CategoriesRepository implements ICategoryRepositories{
     private categories: Category[]
 
-    constructor () {
+    private static INSTANCE: CategoriesRepository
+
+    private constructor () {
         this.categories = []
+    }
+
+    public static getIntance (): CategoriesRepository {
+        if (!CategoriesRepository.INSTANCE) {
+            CategoriesRepository.INSTANCE = new CategoriesRepository()
+        }
+
+        return CategoriesRepository.INSTANCE
     }
 
     create ({ name, description } : CreateCategoryDTO): void {
